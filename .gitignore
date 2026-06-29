@@ -1,0 +1,47 @@
+# Claude Code config repo — track authored config, ignore runtime/cache/secrets.
+
+# Plugin caches & marketplaces (external, large, re-fetchable)
+/plugins/cache/
+/plugins/marketplaces/
+/plugins/*.json
+/plugin-catalog-cache.json
+
+# Session / history / transcripts (sensitive, large)
+/projects/
+/sessions/
+/session-env/
+/history.jsonl
+/file-history/
+/shell-snapshots/
+/paste-cache/
+/downloads/
+/todos/
+
+# Runtime state, caches, telemetry
+/cache/
+/stats-cache.json
+/telemetry/
+/jobs/
+/tasks/
+/plans/
+/teams/
+/daemon/
+/daemon.log
+/daemon-auth-cooldown
+/ide/
+/backups/
+
+# Auth / secrets / machine-specific
+/.credentials.json
+/daemon-auth-status.json
+/remote-settings.json
+/.omc-config.json
+/policy-limits.json
+/settings.local.json
+
+# Transient markers & backups
+/.last-cleanup
+/.last-update-result.json
+/.caveman-active
+*.bak
+*.log
