@@ -14,54 +14,41 @@
       "mcp__codegraph__codegraph_status"
     ]
   },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"/opt/homebrew/Cellar/node/26.0.0/bin/node\" \"/Users/manbnm/.claude/hooks/caveman-activate.js\"",
-            "timeout": 5,
-            "statusMessage": "Loading caveman mode..."
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"/opt/homebrew/Cellar/node/26.0.0/bin/node\" \"/Users/manbnm/.claude/hooks/caveman-mode-tracker.js\"",
-            "timeout": 5,
-            "statusMessage": "Tracking caveman mode..."
-          }
-        ]
-      }
-    ]
-  },
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "bash /Users/manbnm/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "caveman@caveman": true
+    "ponytail@ponytail": true,
+    "financial-analysis@claude-for-financial-services": true,
+    "market-researcher@claude-for-financial-services": true,
+    "equity-research@claude-for-financial-services": true,
+    "investment-banking@claude-for-financial-services": true,
+    "playwright@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
-    "caveman": {
+    "ponytail": {
       "source": {
         "source": "github",
-        "repo": "JuliusBrussee/caveman"
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "claude-for-financial-services": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/financial-services"
       }
     }
   },
-  "effortLevel": "high",
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
+  "autoMemoryEnabled": true,
   "theme": "dark-ansi",
+  "verbose": false,
   "voiceEnabled": true
 }
