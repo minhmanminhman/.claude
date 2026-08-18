@@ -1,0 +1,55 @@
+{
+  "skill_name": "literature-review",
+  "notes": "Outputs are prose, so the human read is the real evaluation. The assertions below only cover what is objectively checkable — layout, provenance flags, and the absence of application language. scripts/lint_review.py checks most of them in one pass, so grade with it rather than by eye.",
+  "evals": [
+    {
+      "id": 0,
+      "name": "fresh-question-order-book-imbalance",
+      "prompt": "I keep seeing people claim order book imbalance predicts short-horizon returns. What does the literature actually say — papers, methods and numbers, not vibes. Write it up somewhere sensible in this repo.",
+      "expected_output": "literature-review-order-book-imbalance.md (or similar kebab-case problem name) placed where the repo keeps notes. Problem/Method/Result per section, a 'What each paper solves' table, verbatim quotes with attribution, read-status flags on every source, a settled/open split. Cont-Kukanov-Stoikov should appear with the R-squared and depth-exponent numbers; the review should note that the relation is contemporaneous rather than predictive, since that is the honest answer to the question asked.",
+      "files": [],
+      "assertions": [
+        "The artifact is named literature-review-{problem}.md with problem in kebab-case naming the question, not the field",
+        "The artifact sits in the directory where the repo already keeps markdown notes, and the reply says where it was placed",
+        "A 'What each paper solves' table appears near the top with problem, method, and paper columns",
+        "Every numbered paper section carries **Problem.**, **Method.** and **Result.** leads",
+        "Every source entry carries a read-status flag: [full text], [abstract], [not retrieved] or equivalent",
+        "At least six distinct papers are cited with journal, year, and a working URL",
+        "At least one paper is quoted verbatim with attribution in each paper section",
+        "scripts/lint_review.py exits 0 on the artifact",
+        "The review states what the literature settles and gives no recommendation about what to build or measure",
+        "Evidence that contradicts the premise of the question is reported rather than omitted"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "rewrite-existing-notes-file",
+      "prompt": "Rewrite experiments/overlay/docs/price_insensitive_flow.md as a literature review. Focus on the papers and what each one solved with what method. Strip everything about my own data and cost assumptions.",
+      "expected_output": "A new literature-review-{problem}.md alongside the original, which is left intact. All project-specific content removed: no cost bars, no data-availability pruning, no shortlist of what to test. Claims the original flagged as second-hand should be retrieved properly where a free copy exists, and the read-status flags updated to match what was actually read. Any number the original got wrong should be corrected with the source that settled it.",
+      "files": ["experiments/overlay/docs/price_insensitive_flow.md"],
+      "assertions": [
+        "The original file is unmodified and still present",
+        "The new artifact contains no reference to the user's data, instruments, cost bar, or next steps",
+        "At least two claims the original marked as secondary are upgraded to full-text reads, with the flag changed accordingly",
+        "Any corrected number is reported to the user with the source that settled it",
+        "scripts/lint_review.py exits 0 on the artifact",
+        "The reply names the file path and the three-to-five load-bearing findings with their numbers"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "non-finance-engineering-decision",
+      "prompt": "Before I commit to an index type for our vector search, I want to know what the published evidence says about HNSW versus IVF-PQ on the recall/latency/memory tradeoff. Gather it properly and put the writeup in docs/.",
+      "expected_output": "literature-review-hnsw-vs-ivf-pq.md in docs/. Tests that the skill generalizes past finance: the primary sources here are papers (Malkov & Yashunski, Jegou et al.) plus first-party benchmarks, and the method sections should name datasets, recall@k definitions, and hardware. Read-status flags still apply. No recommendation about which index to pick.",
+      "files": [],
+      "assertions": [
+        "The artifact is placed in docs/ as asked",
+        "Method sections name the benchmark dataset, the recall metric definition, and the hardware or parameter settings",
+        "Numbers carry units and the configuration they were measured under",
+        "The review distinguishes peer-reviewed results from vendor or first-party benchmarks in the read-status flags",
+        "No recommendation is made about which index type to adopt",
+        "scripts/lint_review.py exits 0 on the artifact"
+      ]
+    }
+  ]
+}
