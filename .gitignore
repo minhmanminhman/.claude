@@ -30,7 +30,8 @@
 /daemon-auth-cooldown
 /ide/
 /backups/
-
+plugins/
+skill-workspaces/
 # Auth / secrets / machine-specific
 /.credentials.json
 /daemon-auth-status.json
