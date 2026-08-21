@@ -1,16 +1,16 @@
 {
-  "pid": 290,
-  "version": "2.1.234",
+  "pid": 17007,
+  "version": "2.1.238",
   "jsonPath": "/Users/manbnm/.claude/daemon.json",
   "logPath": "/Users/manbnm/.claude/daemon.log",
-  "startedAt": 1787032600625,
+  "startedAt": 1787258472082,
   "origin": "transient",
   "spawnedBy": {
     "label": "claude",
-    "cwd": "/Users/manbnm/quantx_hft_crypto",
-    "pid": 44610
+    "cwd": "/Users/manbnm/hft_research",
+    "pid": 97598
   },
-  "procStart": "Tue Aug 18 05:56:36 2026",
-  "launchTarget": "/Users/manbnm/.local/share/claude/versions/2.1.234",
+  "procStart": "Thu Aug 20 20:41:08 2026",
+  "launchTarget": "/Users/manbnm/.local/share/claude/versions/2.1.238",
   "processWrapper": ""
 }
