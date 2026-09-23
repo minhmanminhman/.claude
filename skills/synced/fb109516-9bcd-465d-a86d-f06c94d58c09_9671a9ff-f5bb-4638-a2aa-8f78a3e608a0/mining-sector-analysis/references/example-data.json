@@ -1,0 +1,103 @@
+{
+  "sector_title": "NGÀNH KHOÁNG SẢN",
+  "subtitle": "Sáu tiêu chí đánh giá & so sánh sáu cổ phiếu tiêu biểu",
+  "report_date": "17/07/2026",
+  "data_date": "16/07/2026",
+  "context": [
+    "Nhóm khoáng sản đang trong chu kỳ giá khoáng sản chiến lược: Trung Quốc siết xuất khẩu đất hiếm, antimon, vonfram; giá vàng lập đỉnh; nhu cầu AI, bán dẫn và quốc phòng tăng. Cổ phiếu ngành đã tăng mạnh 2024–2025 rồi điều chỉnh, mở lại cơ hội nhìn nền tảng cơ bản.",
+    "Báo cáo đưa ra khung sáu tiêu chí đánh giá doanh nghiệp khoáng sản, minh họa qua sáu mã: KSV (đồng–vàng–đất hiếm), MSR (vonfram), HGM (antimon), BKC (kẽm–chì), BMC (titan), KSB (đá xây dựng)."
+  ],
+  "weights": {
+    "reserves": 0.25, "production": 0.10, "margin": 0.20,
+    "fcf": 0.20, "debt": 0.15, "valuation": 0.10
+  },
+  "companies": [
+    {
+      "ticker": "KSV",
+      "commodity": "đồng–vàng–đất hiếm",
+      "reserves": "Sin Quyền ~52,8tr t; Đông Pao 1,1tr t REO — dài, đa dạng",
+      "production": "~918 kg vàng; 30.079 t đồng tấm",
+      "net_margin": "15,7%",
+      "fcf_debt": "FCF ~10%; tiền mặt ròng (D/E 0,30)",
+      "roe": "46,6%",
+      "pe": "11,6",
+      "ev_ebitda": "6,6",
+      "scores": { "reserves": 4, "production": 4, "margin": 4, "fcf": 4, "debt": 5, "valuation": 4 }
+    },
+    {
+      "ticker": "MSR",
+      "commodity": "vonfram",
+      "reserves": "83,2tr t + 115tr t mới; đến 2036 +20–30 năm",
+      "production": "~3,5tr t quặng; vonfram −9%",
+      "net_margin": "~0% (EBITDA 29,2%)",
+      "fcf_debt": "Nợ vay CAO (rủi ro chính)",
+      "roe": "phục hồi",
+      "pe": "n/a",
+      "ev_ebitda": "cao",
+      "scores": { "reserves": 5, "production": 4, "margin": 3, "fcf": 2, "debt": 2, "valuation": 2 }
+    },
+    {
+      "ticker": "HGM",
+      "commodity": "antimon",
+      "reserves": "Mậu Duệ 537k t ≈ 25,4k t KL; nhỏ, đơn lẻ",
+      "production": "~500 t antimon kim loại",
+      "net_margin": "67,5%",
+      "fcf_debt": "FCF mạnh; dư tiền, ~0 nợ",
+      "roe": "90,5%",
+      "pe": "4,8",
+      "ev_ebitda": "3,0",
+      "scores": { "reserves": 2, "production": 2, "margin": 5, "fcf": 4, "debt": 5, "valuation": 5 }
+    },
+    {
+      "ticker": "BKC",
+      "commodity": "kẽm–chì",
+      "reserves": "Kẽm/chì, quy mô trung bình",
+      "production": "Nhỏ",
+      "net_margin": "17,8%",
+      "fcf_debt": "FCF ÂM (~−125 tỷ); pha loãng +29%",
+      "roe": "26,5%",
+      "pe": "3,5",
+      "ev_ebitda": "5,5",
+      "scores": { "reserves": 3, "production": 3, "margin": 3, "fcf": 2, "debt": 3, "valuation": 5 }
+    },
+    {
+      "ticker": "BMC",
+      "commodity": "titan",
+      "reserves": "Titan, mỏ nhỏ",
+      "production": "Nhỏ",
+      "net_margin": "9,6%",
+      "fcf_debt": "Dư tiền, không nợ",
+      "roe": "5,0%",
+      "pe": "19,4",
+      "ev_ebitda": "5,2",
+      "scores": { "reserves": 2, "production": 2, "margin": 2, "fcf": 3, "debt": 5, "valuation": 3 }
+    },
+    {
+      "ticker": "KSB",
+      "commodity": "đá xây dựng",
+      "reserves": "Đá XD (khác phân ngành)",
+      "production": "Trung bình",
+      "net_margin": "19,3%",
+      "fcf_debt": "Altman Z thấp 1,34",
+      "roe": "5,5%",
+      "pe": "13,2",
+      "ev_ebitda": "9,5",
+      "scores": { "reserves": 3, "production": 3, "margin": 3, "fcf": 3, "debt": 2, "valuation": 3 }
+    }
+  ],
+  "criteria_notes": {
+    "reserves": "MSR (Núi Pháo) vượt trội — 83,2 triệu tấn quặng + ~115 triệu tấn tài nguyên mới, đời mỏ đến 2036 và thêm 20–30 năm, chiếm ~21% cung vonfram ngoài Trung Quốc. KSV có mỏ đồng Sin Quyền lớn nhất Việt Nam (~52,8 triệu tấn quặng, ~1% Cu) cùng đất hiếm Đông Pao (~1,1 triệu tấn oxit — lớn nhất VN, gần như chưa khai thác). HGM chỉ có mỏ antimon Mậu Duệ nhỏ, đơn lẻ (25.400 tấn kim loại) — điểm yếu lớn nhất dù các chỉ số khác đều tốt.",
+    "production": "KSV lớn và đa dạng (~918 kg vàng, ~30.000 tấn đồng tấm/năm — nhà khai thác vàng lớn nhất VN). MSR chế biến 3,5 triệu tấn quặng/năm nhưng sản lượng vonfram 2025 giảm 9%. HGM chỉ ~500 tấn antimon/năm — rất nhỏ; doanh thu bùng nổ gần như hoàn toàn do giá, không do sản lượng.",
+    "margin": "HGM dẫn đầu (biên gộp ~85%, biên ròng ~67%). KSV ~15,7%, nhờ vàng–bạc là sản phẩm phụ hạ giá thành đồng. MSR có bước ngoặt: biên EBITDA từ 12,5% (2024) lên 29,2% (2025) sau khi thoái mảng HCS biên thấp. Lưu ý: không mã nào công bố giá thành đơn vị (AISC), nên biên là chỉ báo chi phí tốt nhất hiện có.",
+    "fcf": "KSV nổi bật với lợi suất FCF ~10% và tiền mặt ròng. HGM tạo tiền mạnh nhờ biên cao, capex thấp, đủ trả cổ tức ~14%. BKC âm FCF (~−125 tỷ) do đầu tư nặng và pha loãng (+29% cổ phiếu) — giá trị chỉ hiện thực nếu FCF đảo chiều dương.",
+    "debt": "KSV mạnh nhất (tiền mặt ròng, nợ/vốn chủ 0,30); HGM, BMC dư tiền, gần như không nợ. Rủi ro tập trung ở MSR — nợ vay cao, luận điểm phụ thuộc giá vonfram 2026. KSB có Altman Z thấp (1,34). Ngoài ra cần lưu ý nghĩa vụ hoàn nguyên môi trường — nợ thật thường nằm ngoài con số nợ vay.",
+    "valuation": "HGM và BKC rẻ nhất (P/E 4–5 lần), phản ánh cả sức hấp dẫn lẫn rủi ro quy mô nhỏ. KSV hợp lý (P/E 11,6; EV/EBITDA 6,6) cho doanh nghiệp đầu ngành lãi kỷ lục, nhưng P/B 4,78 cao. BMC rẻ theo tài sản (P/B 0,67) nhưng đắt theo lợi nhuận (P/E 19; ROE 5%) — rủi ro bẫy giá trị. MSR không định giá được theo P/E — là 'cược' vào chu kỳ vonfram."
+  },
+  "conclusions": [
+    { "ticker": "KSV", "note": "cân bằng tốt nhất: đầu ngành, lãi kỷ lục 2025 (~2.000 tỷ, +64%), tiền mặt ròng, định giá hợp lý, cộng optionality đất hiếm. Lưu ý: P/B cao, free-float thấp." },
+    { "ticker": "HGM", "note": "chất lượng vận hành cao nhất (biên ~85%, ROE 90%), định giá rẻ, cổ tức ~14%. Rủi ro: mỏ nhỏ đơn lẻ, tăng trưởng do giá." },
+    { "ticker": "MSR", "note": "trữ lượng đẳng cấp thế giới, đòn bẩy lớn nhất vào giá vonfram, nhưng nợ cao và 2025 mới gần hòa vốn. 'Cược' rủi ro cao vào chu kỳ 2026." },
+    { "ticker": "BKC / BMC / KSB", "note": "hấp dẫn có điều kiện: BKC chờ FCF đảo chiều; BMC rủi ro bẫy giá trị; KSB thuộc phân ngành đá xây dựng." }
+  ],
+  "sources": "stockanalysis.com; BCTN Vimico/Masan High-Tech/HGM; cafef, tinnhanhchungkhoan (số liệu tại 16/07/2026)."
+}

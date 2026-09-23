@@ -1,0 +1,74 @@
+<!-- Local file. If publishing as an Artifact later, strip the doctype/meta
+     and keep only <title>, <style>, and the <main> body. -->
+<!doctype html>
+<meta charset="utf-8">
+<title>{Concept}</title>
+<style>
+  :root {
+    --bg: #fdfdfb; --fg: #1c1c1a; --muted: #5c5c56;
+    --rule: #e0ded6; --accent: #b4531f; --code-bg: #f2f0ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #17171a; --fg: #e6e4de; --muted: #9b988f;
+            --rule: #33333a; --accent: #e8935c; --code-bg: #202026; }
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); margin: 0;
+         font: 17px/1.65 Georgia, "Iowan Old Style", serif; }
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 6rem; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 1rem; }
+  h2 { font-size: 1.15rem; margin: 2.75rem 0 .75rem;
+       padding-top: .75rem; border-top: 1px solid var(--rule); }
+  .lede { font-size: 1.2rem; color: var(--accent); font-style: italic;
+          margin: 0 0 2rem; }
+  figure { margin: 2rem 0; }
+  figure svg { width: 100%; height: auto; display: block; }
+  figcaption { color: var(--muted); font-size: .9rem; margin-top: .6rem; }
+  pre { background: var(--code-bg); padding: 1rem; border-radius: 4px;
+        overflow-x: auto; font: 14px/1.5 ui-monospace, Menlo, monospace; }
+  code { font: .92em ui-monospace, Menlo, monospace; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem;
+          display: block; overflow-x: auto; }
+  th, td { text-align: left; padding: .5rem .75rem;
+           border-bottom: 1px solid var(--rule); }
+  .aside { border-left: 3px solid var(--accent); padding: .1rem 0 .1rem 1rem;
+           color: var(--muted); }
+  /* SVG drawings inherit theme through these */
+  svg { --line: var(--fg); --hi: var(--accent); --dim: var(--muted); }
+</style>
+<main>
+  <h1>{Concept}</h1>
+  <p class="lede">{The one-sentence analogy.}</p>
+
+  <h2>The problem it solves</h2>
+  <p>{What breaks without it. The payoff goes here.}</p>
+
+  <h2>The analogy</h2>
+  <p>{Ground it in what the reader already owns, then sharpen.}</p>
+
+  <h2>The picture</h2>
+  <figure>
+    <svg viewBox="0 0 640 260" role="img" aria-label="{describe the diagram}">
+      <!-- Draw the mechanism, not the vocabulary.
+           Use stroke="var(--line)" / "var(--hi)" so both themes work.
+           Label with the reader's real names. Put numbers on the drawing. -->
+    </svg>
+    <figcaption>{What to notice, including the surprising part.}</figcaption>
+  </figure>
+
+  <h2>A worked example</h2>
+  <p>{One real case, real numbers, start to finish.}</p>
+  <pre><code>{the trace or the arithmetic}</code></pre>
+
+  <h2>In plain English</h2>
+  <p>{One sentence a competent outsider understands.}</p>
+
+  <h2>The technical form</h2>
+  <p>{Formula, signature, invariant. Name each symbol's job before it appears.}</p>
+
+  <h2>Where this gets confusing</h2>
+  <p class="aside">{The genuinely hard part, and every hand-wave flagged.}</p>
+
+  <h2>What this unlocks</h2>
+  <p>{Neighbouring ideas that now cost less.}</p>
+</main>
