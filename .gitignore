@@ -46,3 +46,15 @@ skill-workspaces/
 /.caveman-active
 *.bak
 *.log
+
+# macOS
+.DS_Store
+
+# Daemon and runtime state
+/daemon.lock
+/daemon.status.json
+/mcp-needs-auth-cache.json
+/debug/
+/state/
+/feedback/
+*.bak.*

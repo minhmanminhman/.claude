@@ -1,6 +1,8 @@
 {
+  "syncClaudeAiPlugins": false,
   "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "opus"
   },
   "permissions": {
     "allow": [
@@ -11,20 +13,86 @@
       "mcp__codegraph__codegraph_callees",
       "mcp__codegraph__codegraph_impact",
       "mcp__codegraph__codegraph_files",
-      "mcp__codegraph__codegraph_status"
-    ]
+      "mcp__codegraph__codegraph_status",
+      "mcp__codegraph__*"
+    ],
+    "deny": [
+      "Agent(earnings-reviewer:earnings-reviewer)",
+      "Agent(market-researcher:market-researcher)",
+      "Agent(pitch-agent:pitch-agent)"
+    ],
+    "defaultMode": "auto"
   },
   "model": "opus[1m]",
+  "skillOverrides": {
+    "book-to-skill": "off",
+    "elements-of-style": "off",
+    "find-skills": "off",
+    "frontend-design": "off",
+    "explain": "user-invocable-only",
+    "literature-review": "user-invocable-only",
+    "security-review": "user-invocable-only",
+    "research": "user-invocable-only",
+    "autoresearch": "user-invocable-only",
+    "skill-creator": "user-invocable-only",
+    "refactor": "user-invocable-only",
+    "testing-strategy": "user-invocable-only",
+    "grilling": "user-invocable-only",
+    "qrspi:0_grill_with_docs": "user-invocable-only",
+    "qrspi:1_question": "user-invocable-only",
+    "qrspi:2_research": "user-invocable-only",
+    "qrspi:3_design": "user-invocable-only",
+    "qrspi:4_structure": "user-invocable-only",
+    "qrspi:5_plan": "user-invocable-only",
+    "qrspi:6_worktree": "user-invocable-only",
+    "qrspi:7_implement": "user-invocable-only",
+    "qrspi:8_cleanup_docstrings": "user-invocable-only",
+    "qrspi:9_pr": "user-invocable-only",
+    "python-best-practices": "name-only",
+    "brainstorming": "off",
+    "anthropic-skills:mining-sector-analysis": "off",
+    "anthropic-skills:morning": "off",
+    "anthropic-skills:chrome-browser": "user-invocable-only",
+    "anthropic-skills:built-in-browser": "user-invocable-only",
+    "anthropic-skills:computer-use": "user-invocable-only",
+    "anthropic-skills:deep-research": "user-invocable-only",
+    "anthropic-skills:skill-creator": "user-invocable-only",
+    "anthropic-skills:import-memory": "user-invocable-only"
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "codegraph prompt-hook"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/manbnm/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "bash /Users/manbnm/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "financial-analysis@claude-for-financial-services": true,
-    "market-researcher@claude-for-financial-services": true,
-    "equity-research@claude-for-financial-services": true,
-    "investment-banking@claude-for-financial-services": true,
+    "financial-analysis@claude-for-financial-services": false,
+    "market-researcher@claude-for-financial-services": false,
+    "equity-research@claude-for-financial-services": false,
+    "investment-banking@claude-for-financial-services": false,
     "playwright@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
@@ -35,14 +103,27 @@
       }
     }
   },
-  "outputStyle": "Plain English",
+  "outputStyle": "Concise",
+  "feedbackDrafts": "off",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "high"
+    },
+    "claude-fable-5": {
+      "effortLevel": "high"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "high"
+    }
+  },
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
-  "autoMemoryEnabled": true,
+  "autoMemoryEnabled": false,
   "theme": "dark-ansi",
   "verbose": false,
+  "agentPushNotifEnabled": true,
   "voiceEnabled": true
 }
