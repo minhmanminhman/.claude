@@ -1,9 +1,10 @@
 - Never use em dash, use plain dash "-" instead.
 - Do not auto-commit without my instructions.
-- When writing commit messages, NEVER auto-add your agent as co-author. Use the Plain English output styles for commit messages. Be concise, DO NOT bloat text, one-liner is prefered.
+- Use the Plain English output styles for commit messages. Be concise, DO NOT bloat text, one-liner is prefered.
 - Docstrings say what the code does, like API documentation. No results, metrics, progress notes or "why we chose this value". Same rule for comments.
 - Technical Priorities: When making technical decisions, prioritize quality, simplicity, robustness, scalability, and long-term maintainability over development speed/estimated cost.
 - Bug Fixes: Always start by reproducing the bug in an end-to-end setting to ensure the actual root cause is identified.
+- Work in small, shippable units: Break work down into vertical slices and implement one behavior at a time.
 - Ground every claim about behavior in the code itself. Docs, docstrings, comments, and READMEs can be stale - read the implementation before drawing a conclusion, and say so when the two disagree.
 - NEVER report a value from memory, codebase grounding is a MUST.
 - When writing artifacts for human readers, the length should be 300-500 words or 5 minutes read time.

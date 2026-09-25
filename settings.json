@@ -21,7 +21,8 @@
       "Agent(market-researcher:market-researcher)",
       "Agent(pitch-agent:pitch-agent)"
     ],
-    "defaultMode": "auto"
+    "defaultMode": "auto",
+    "ask": ["Bash(git commit:*)", "Bash(git push:*)"]
   },
   "model": "opus[1m]",
   "skillOverrides": {
@@ -60,16 +61,6 @@
     "anthropic-skills:import-memory": "user-invocable-only"
   },
   "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "codegraph prompt-hook"
-          }
-        ]
-      }
-    ],
     "SessionStart": [
       {
         "matcher": "^(startup|resume|clear|compact|fork)$",
@@ -125,5 +116,6 @@
   "theme": "dark-ansi",
   "verbose": false,
   "agentPushNotifEnabled": true,
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "attribution": { "commit": "", "pr": "" }
 }
