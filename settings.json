@@ -4,6 +4,10 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_SUBAGENT_MODEL": "opus"
   },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "mcp__codegraph__codegraph_explore",
@@ -21,10 +25,13 @@
       "Agent(market-researcher:market-researcher)",
       "Agent(pitch-agent:pitch-agent)"
     ],
-    "defaultMode": "auto",
-    "ask": ["Bash(git commit:*)", "Bash(git push:*)"]
+    "ask": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ],
+    "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "skillOverrides": {
     "book-to-skill": "off",
     "elements-of-style": "off",
@@ -105,6 +112,9 @@
     },
     "claude-fable-5-1": {
       "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
     }
   },
   "tui": "fullscreen",
@@ -116,6 +126,5 @@
   "theme": "dark-ansi",
   "verbose": false,
   "agentPushNotifEnabled": true,
-  "voiceEnabled": true,
-  "attribution": { "commit": "", "pr": "" }
+  "voiceEnabled": true
 }
