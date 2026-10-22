@@ -58,3 +58,6 @@ skill-workspaces/
 /state/
 /feedback/
 *.bak.*
+
+# Skill sync marker
+skills/synced/*/.last-complete-round

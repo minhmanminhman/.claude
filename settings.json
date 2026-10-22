@@ -91,13 +91,20 @@
     "market-researcher@claude-for-financial-services": false,
     "equity-research@claude-for-financial-services": false,
     "investment-banking@claude-for-financial-services": false,
-    "playwright@claude-plugins-official": true
+    "playwright@claude-plugins-official": true,
+    "pstack@cursor-plugins": true
   },
   "extraKnownMarketplaces": {
     "claude-for-financial-services": {
       "source": {
         "source": "github",
         "repo": "anthropics/financial-services"
+      }
+    },
+    "cursor-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "cursor/plugins"
       }
     }
   },
