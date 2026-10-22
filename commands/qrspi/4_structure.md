@@ -33,6 +33,8 @@ Read `$ARGUMENTS/design.md` and `$ARGUMENTS/research.md`.
    - What it accomplishes (1-2 sentences)
    - Files affected
    - Key type signatures or interface changes
+   - Seams under test it exercises, from `design.md` `## Seams Under Test`
+   - Phases it depends on
    - How to verify it works (automated command + what to check manually)
 
 5. **Write `structure.md`** to the artifact directory:
@@ -51,6 +53,8 @@ Read `$ARGUMENTS/design.md` and `$ARGUMENTS/research.md`.
    - `functionName(param: Type): ReturnType` — new/modified
    - `NewType { field: Type }` — new type
 
+   **Seams**: `seam_name`, ...
+   **Depends on**: Phase N, or none
    **Verify**: [project test command] passes; [manual check description]
 
    ---
@@ -96,3 +100,12 @@ Read `$ARGUMENTS/design.md` and `$ARGUMENTS/research.md`.
 ## When to Go Back
 
 If you discover the design missed a critical constraint or made a decision based on incorrect assumptions about the codebase, tell the user and suggest re-running `/qrspi/3_design` rather than working around a flawed design.
+
+## Unattended Mode
+
+When `/qrspi/auto` runs this stage, these replace the matching steps above. Each logged choice is an entry in `$ARGUMENTS/decisions.md`, in the format defined in `auto.md`.
+
+- **Step 6, codegraph precondition:** `auto.md` checks it before the run starts.
+- **Step 6, NO-SHIP after round 3:** revise `structure.md` once more with the best grounded fix for each unresolved finding, log each fix with the finding it answers, and continue.
+- **Step 7:** skip. Do not present the outline or wait.
+- **When to Go Back:** log the design flaw and the workaround chosen, and continue.

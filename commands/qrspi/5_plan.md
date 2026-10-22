@@ -34,7 +34,7 @@ Read `$ARGUMENTS/structure.md`, `$ARGUMENTS/design.md`, and `$ARGUMENTS/research
 
    ### Tests first (red)
    [Per the red-green-refactor discipline of the `tdd` skill: the failing tests that define this phase's behavior, authored BEFORE implementation. Each names the test file, the case, and the expected assertion. Implement (`7_implement`) writes these, confirms they fail (red), then makes them pass (green).]
-   - `path/to/test_file` — `test_case_name`: [what it asserts / expected behavior]
+   - `path/to/test_file` - `test_case_name` at `seam_name`: [what it asserts / expected behavior]
    - ...
 
    ### Changes
@@ -82,6 +82,7 @@ Read `$ARGUMENTS/structure.md`, `$ARGUMENTS/design.md`, and `$ARGUMENTS/research
 - Follow the phase order from `structure.md`. Do not reorganize.
 - Include code snippets for anything non-obvious. Skip boilerplate.
 - Checkboxes (`- [ ]`) are mandatory for all verification steps — they track progress during implementation.
+- Every red test names its seam from `design.md` `## Seams Under Test`. When no listed seam can observe the behavior, name the nearest public interface and mark it `(unconfirmed seam)`.
 - Every phase must lead with its **Tests first (red)** block — the failing tests that define the phase, authored before implementation, per the `tdd` skill's red-green-refactor. A phase with no red tests is incomplete. `7_implement` enforces this by following the `tdd` skill.
 - No open questions in the final plan. Resolve or ask before writing.
 - Use the project's existing test/lint/build commands for verification. Check CLAUDE.md, Makefile, or package.json for the right commands.
@@ -93,3 +94,25 @@ Read `$ARGUMENTS/structure.md`, `$ARGUMENTS/design.md`, and `$ARGUMENTS/research
 ## When to Go Back
 
 If expanding the structure reveals that a phase can't be implemented as outlined — missing information, incorrect assumptions, or a structural issue — tell the user and suggest re-running `/qrspi/4_structure` or `/qrspi/3_design` rather than writing a plan you know is flawed.
+
+## Unattended Mode
+
+When `/qrspi/auto` runs this stage, these replace the matching steps above. Each logged choice is an entry in `$ARGUMENTS/decisions.md`, in the format defined in `auto.md`.
+
+- **Step 4, open questions:** answer each with the best choice grounded in `design.md`, `research.md` and the code, log it, and write the plan with that answer.
+- **Unconfirmed seams:** log every test marked `(unconfirmed seam)`.
+- **Step 5:** skip the summary. Instead append this section to `plan.md`, with the baseline SHA from `decisions.md`:
+
+  ```markdown
+  ## Auto Run
+  Baseline: <sha>
+  - [ ] Refactor
+  - [ ] Fable review round 1
+  - [ ] Fix round 1
+  - [ ] Fable review round 2
+  - [ ] Fix round 2
+  - [ ] Cleanup
+  - [ ] Report
+  ```
+
+- **When to Go Back:** log the structure flaw and how the plan works around it, and continue.

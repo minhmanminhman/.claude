@@ -83,3 +83,20 @@ If you're starting fresh in a new context window:
 ## When to Go Back
 
 If a phase reveals the plan is fundamentally wrong — not a small mismatch but a structural issue like a missing dependency, wrong API, or incorrect assumption about the codebase — tell the user. For small mismatches, adapt and continue. For fundamental issues, suggest re-running `/qrspi/5_plan` or even `/qrspi/3_design` with the new information rather than building on a broken foundation.
+
+## Unattended Mode
+
+When `/qrspi/auto` runs this stage, these replace the matching steps above. Each logged choice is an entry in `$ARGUMENTS/decisions.md`, in the format defined in `auto.md`. Run at most 3 sub-agents at a time.
+
+- **Seams:** seams listed in `design.md` `## Seams Under Test` count as confirmed for the `tdd` skill. A test marked `(unconfirmed seam)` in `plan.md` is already logged; write it at the seam the plan names.
+- **Step 4, red:** spawn `tester` with the phase's seam, behavior and "red expected". Continue the same `tester` with SendMessage for the next phase while it works in the same area. The `tester` runs and deletes its scrap tests before it reports.
+- **Step 4, green:** write the minimal production code yourself and run the phase's tests.
+- **Step 4, refactor:** skip. The auto run has its own refactor stage.
+- **Step 4, mismatch:** adapt the plan's intent to the code, log the mismatch and the adaptation, and continue.
+- **After green, mutation check:** continue the same `tester` with "mutation check" and the phase's tests. It reports which mutants were killed, and strengthens a test when one survives.
+- **Step 5, verification:** run the phase's tests, then the full suite. Fix failures and retry, up to 3 attempts.
+- **Blocked phase:** when red, green or verification still fails after 3 attempts, add `> BLOCKED: <reason>` under the phase heading in `plan.md`, log it, and leave its boxes unchecked. Skip every phase whose `Depends on` in `structure.md` includes a blocked phase, and mark it `> BLOCKED: depends on Phase N`. Continue with the rest.
+- **Step 6:** do not commit.
+- **Step 7:** do not pause. Leave manual items unchecked; the report lists them.
+- **Resuming:** skip phases marked `> BLOCKED`.
+- **When to Go Back:** log the plan flaw and the workaround chosen, and continue.

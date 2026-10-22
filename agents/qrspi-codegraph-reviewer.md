@@ -41,13 +41,14 @@ This mirrors the caller's hard-require contract — never silently degrade to un
    - "current state" assertions about how existing code works
    - phase boundaries that assume a given call graph or dependency direction (structure)
    - "what we're NOT doing" boundaries that assume something already exists
+   - "Seams Under Test" entries: each existing seam is a public symbol at the cited `file:line`; each seam marked "new" is introduced by a phase (structure)
 3. **Ground each claim with `codegraph_explore`** — resolve the named symbols, confirm the cited `file:line` actually contains what the doc says, verify call paths and blast radius match the doc's phase ordering. Use Read/Grep only to confirm exact line content codegraph surfaces.
 4. **Classify each grounded gap** by severity (see below).
 5. **Decide the verdict** by the gate rule.
 
 ## Severity
 
-- **🔴 blocker** — a claim is false, a cited symbol/`file:line` does not exist or says something else, a phase depends on a call path that does not exist, or a scope boundary assumes code that is absent. Any blocker ⇒ NO-SHIP.
+- **🔴 blocker** - a claim is false, a cited symbol/`file:line` does not exist or says something else, a phase depends on a call path that does not exist, a scope boundary assumes code that is absent, or a listed seam is missing, private, or (structure) marked "new" but introduced by no phase. Any blocker ⇒ NO-SHIP.
 - **🟡 major** — a load-bearing claim is unverifiable from the codebase (vague, no anchor) or a phase ordering is risky given the real blast radius. Two or more majors ⇒ NO-SHIP.
 - **🟢 minor** — imprecision that does not threaten buildability (loose wording, missing-but-inferable ref). Never blocks alone.
 

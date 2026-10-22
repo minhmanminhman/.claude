@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 // Detection harness for /qrspi/8_cleanup_docstrings (generic port of cleanup-docstrings).
 // Scans branch-vs-base changed files for dev-process cruft inside comments/docstrings,
-// and lists temp planning docs (thoughts/qrspi) the branch touched. Detection only — never edits.
+// and lists temp planning docs (thoughts/qrspi) and scrap test files the branch touched. Detection only - never edits.
 // Output: human report (default) or JSON (--json) for the agent to turn into a diff proposal.
 //
 // Usage:
 //   node driver.mjs [--base <ref>] [--json]
+//   node driver.mjs --baseline <sha> [--json]
 //   CLEANUP_BASE=<ref> node driver.mjs
 // Default base: origin/HEAD if resolvable, else main.
+// --baseline scans the working tree against <sha>, uncommitted and untracked files included.
 
 import { execFileSync } from 'node:child_process';
 import { readFileSync, existsSync } from 'node:fs';
@@ -16,7 +18,13 @@ const args = process.argv.slice(2);
 const json = args.includes('--json');
 const git = (a) => execFileSync('git', a, { encoding: 'utf8' }).trim();
 
-const base = (() => {
+const argValue = (flag) => {
+  const i = args.indexOf(flag);
+  return i >= 0 ? args[i + 1] : undefined;
+};
+const baseline = argValue('--baseline');
+
+const base = baseline ?? (() => {
   const i = args.indexOf('--base');
   if (i >= 0 && args[i + 1]) return args[i + 1];
   if (process.env.CLEANUP_BASE) return process.env.CLEANUP_BASE;
@@ -27,9 +35,16 @@ const base = (() => {
   }
 })();
 
+const lines = (out) => out.split('\n').filter(Boolean);
+
 let changed;
 try {
-  changed = git(['diff', '--name-only', `${base}...HEAD`]).split('\n').filter(Boolean);
+  changed = baseline
+    ? [
+        ...lines(git(['diff', '--name-only', baseline])),
+        ...lines(git(['ls-files', '--others', '--exclude-standard'])),
+      ]
+    : lines(git(['diff', '--name-only', `${base}...HEAD`]));
 } catch (e) {
   console.error(`git diff failed against base '${base}': ${e.message}`);
   process.exit(2);
@@ -39,9 +54,12 @@ try {
 const CODE = /\.(rs|ts|tsx|js|jsx|mjs|cjs|py|go|java|kt|c|cc|cpp|h|hpp|rb|php|swift|html|toml|yaml|yml)$/;
 // Temp planning docs (dev-process artifacts QRSPI created for reference).
 const TEMP_DOC = /(^|\/)(thoughts|\.qrspi)\//i;
+// Scrap test files the tester writes to probe behavior and must delete.
+const SCRAP = /(^|\/)[^/]*scrap[^/]*$/i;
 
 const codeFiles = changed.filter((f) => CODE.test(f) && existsSync(f));
 const tempDocs = changed.filter((f) => TEMP_DOC.test(f));
+const scrapFiles = changed.filter((f) => SCRAP.test(f) && !TEMP_DOC.test(f) && existsSync(f));
 
 // A line counts as a comment if it carries a comment marker. Keeps us off code/string literals.
 const COMMENT = /(^\s*(\/\/!?|\/\/\/|\/\/|#|\*|<!--|"""|''')|\/\/|#\s|<!--)/;
@@ -92,7 +110,7 @@ for (const f of codeFiles) {
 }
 
 if (json) {
-  console.log(JSON.stringify({ base, findings, tempDocs }, null, 2));
+  console.log(JSON.stringify({ base, findings, tempDocs, scrapFiles }, null, 2));
   process.exit(0);
 }
 
@@ -112,5 +130,12 @@ if (tempDocs.length) {
   for (const d of tempDocs) console.log(`    ${d}`);
 } else {
   console.log('  none on branch');
+}
+console.log('\n## scrap test files');
+if (scrapFiles.length) {
+  console.log('  still present (delete them):');
+  for (const f of scrapFiles) console.log(`    ${f}`);
+} else {
+  console.log('  none');
 }
 console.log(`\nTotal findings: ${findings.length}`);

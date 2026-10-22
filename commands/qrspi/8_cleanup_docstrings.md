@@ -29,7 +29,7 @@ The artifact directory is `$ARGUMENTS`. Run from the implementation worktree/bra
 
    Different base branch: `node ~/.claude/commands/qrspi/driver.mjs --base develop`.
 
-   The report groups findings by tag (`phase`, `temp-ref`, `decision`, `ai-tag`), each line `file:line  <comment text>`, plus a `temp planning docs` block listing `thoughts/qrspi` docs the branch touched.
+   The report groups findings by tag (`phase`, `temp-ref`, `decision`, `ai-tag`), each line `file:line  <comment text>`, plus a `temp planning docs` block listing `thoughts/qrspi` docs the branch touched and a `scrap test files` block listing scrap test files still present.
 
 2. **Per finding — filter, then rewrite:**
    - **Filter.** The harness flags candidates, not verdicts. Keep domain uses — a comment where "decision"/"phase" describes what the code *is* (e.g. a field named `phase`, a state machine step) is not residue. Leave it.
@@ -63,3 +63,13 @@ The artifact directory is `$ARGUMENTS`. Run from the implementation worktree/bra
 - `fatal: ambiguous argument '<base>...HEAD'` → the base ref doesn't exist locally. Use an existing branch (`git branch -a`) or fetch it.
 - `0 code files scanned` → the branch has no changed code files vs base, or you're on the base branch itself.
 - `node: command not found` → requires Node ≥ 18. Install Node or run the detection manually with grep over the changed files.
+
+## Unattended Mode
+
+When `/qrspi/auto` runs this stage, these replace the matching steps above.
+
+- **Step 1:** run `node ~/.claude/commands/qrspi/driver.mjs --baseline <sha> --json`, with the SHA from the `Baseline:` line in `plan.md`. It scans the working tree against that commit, uncommitted and untracked files included.
+- **Steps 3-4:** apply the filtered rewrites without waiting for approval. The report lists each one.
+- **Scrap test files:** delete every file in `scrapFiles`, rerun the driver to confirm none remain, then run the full suite.
+- **Other untracked files:** list untracked files that `plan.md` does not name (for example mutation tool output). Do not delete them; the report lists them.
+- **Step 5:** skip. Never remove or move `thoughts/qrspi` docs.

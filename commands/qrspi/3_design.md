@@ -36,6 +36,8 @@ Read `$ARGUMENTS/task.md`, `$ARGUMENTS/questions.md`, and `$ARGUMENTS/research.m
    **Q2: ...**
    ```
 
+   One of the questions MUST confirm the **seams under test**: the public interfaces where tests will observe the new behavior. Offer the candidates found in the research (existing ones with `file:line`, or new ones the design introduces) and the behaviors each would cover. Only seams the user confirms go into `design.md`.
+
    Do NOT skip this step. Do NOT write the design document without user input.
 
 4. **Write `design.md`** (~200 lines) to the artifact directory:
@@ -57,6 +59,10 @@ Read `$ARGUMENTS/task.md`, `$ARGUMENTS/questions.md`, and `$ARGUMENTS/research.m
    1. **[Decision name]**: [chosen option] — [why]
    2. **[Decision name]**: [chosen option] — [why]
    ...
+
+   ## Seams Under Test
+   [One line per seam the user confirmed in step 3]
+   - `seam_name` (`file:line`, or "new") - behaviors: [what tests at this seam cover]
 
    ## What We're NOT Doing
    [Explicit scope boundaries to prevent creep]
@@ -91,6 +97,7 @@ Read `$ARGUMENTS/task.md`, `$ARGUMENTS/questions.md`, and `$ARGUMENTS/research.m
 - You MUST ask questions and wait before writing. No exceptions.
 - "Patterns to Follow" is critical — call out both good and bad patterns found in the codebase.
 - "What We're NOT Doing" prevents scope creep downstream.
+- "Seams Under Test" lists only user-confirmed seams. Downstream tests are written at these seams; a test at any other seam is logged as unconfirmed.
 
 ## When to Go Back
 
