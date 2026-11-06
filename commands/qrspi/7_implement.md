@@ -86,7 +86,7 @@ If a phase reveals the plan is fundamentally wrong — not a small mismatch but 
 
 ## Unattended Mode
 
-When `/qrspi/auto` runs this stage, these replace the matching steps above. Each logged choice is an entry in `$ARGUMENTS/decisions.md`, in the format defined in `auto.md`. Run at most 3 sub-agents at a time.
+When `/qrspi/auto` runs this stage, these replace the matching steps above. Each logged choice is an entry in `$ARGUMENTS/decisions.md`, in the format defined in `~/.claude/commands/qrspi/auto.md`. Run at most 3 sub-agents at a time.
 
 - **Seams:** seams listed in `design.md` `## Seams Under Test` count as confirmed for the `tdd` skill. A test marked `(unconfirmed seam)` in `plan.md` is already logged; write it at the seam the plan names.
 - **Step 4, red:** spawn `tester` with the phase's seam, behavior and "red expected". Continue the same `tester` with SendMessage for the next phase while it works in the same area. The `tester` runs and deletes its scrap tests before it reports.

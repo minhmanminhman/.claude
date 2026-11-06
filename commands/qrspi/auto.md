@@ -29,7 +29,7 @@ Check these before anything else. If one fails, tell the user what to fix and st
 Find the first incomplete stage from the files on disk:
 
 1. `plan.md` has an `## Auto Run` section: read `Baseline:` from it. Continue at the first phase with unchecked automated items that is not marked `> BLOCKED`, or else at the first unchecked `## Auto Run` box.
-2. `plan.md` exists without `## Auto Run`: append that section (see `5_plan.md` Unattended Mode) and start at implement.
+2. `plan.md` exists without `## Auto Run`: append that section (see `~/.claude/commands/qrspi/5_plan.md` Unattended Mode) and start at implement.
 3. `structure.md` exists and `reviews/` holds its last round as SHIP, or `decisions.md` logs the round 3 fix: start at plan.
 4. Otherwise start at structure. On a fresh start, create `decisions.md` with `Baseline: <git rev-parse HEAD>`.
 
@@ -48,9 +48,11 @@ Every choice a stage would have asked the user is logged here, one entry each:
 
 ## Stages
 
-1. **Structure.** Follow `4_structure.md` with its Unattended Mode.
-2. **Plan.** Follow `5_plan.md` with its Unattended Mode.
-3. **Implement.** Follow `7_implement.md` with its Unattended Mode: for each phase, `tester` writes red tests (using scrap tests to probe first), you write the green code, `tester` runs the mutation check, then the full suite runs.
+Read each stage file in full before running it. In a stage file, `$ARGUMENTS` means this run's artifact directory.
+
+1. **Structure.** Follow `~/.claude/commands/qrspi/4_structure.md` with its Unattended Mode.
+2. **Plan.** Follow `~/.claude/commands/qrspi/5_plan.md` with its Unattended Mode.
+3. **Implement.** Follow `~/.claude/commands/qrspi/7_implement.md` with its Unattended Mode: for each phase, `tester` writes red tests (using scrap tests to probe first), you write the green code, `tester` runs the mutation check, then the full suite runs.
 4. **Refactor.** Load the `refactor` skill. Scope: files changed since the baseline, plus direct callers and callees of changed symbols (`codegraph_callers`, `codegraph_callees`, one hop). Behavior must not change, and test assertions stay as they are. Before each step, copy the files it touches to a temp directory outside the repo. Run the full suite after the step, and restore the copies if it fails. This replaces the skill's "commit before and after" rule. Check `Refactor`.
 5. **Fable review round N** (N = 1, 2). Spawn `qrspi-fable-reviewer` with `artifact_dir`, `repo_root`, `baseline`, `round` = N and, for round 2, the round 1 findings with how each was resolved. Save its output to `reviews/code-round-N.md`. Check the box.
 6. **Fix round N.** Load the `receiving-code-review` skill and check every finding against the code by reproducing its scenario.
@@ -60,7 +62,7 @@ Every choice a stage would have asked the user is logged here, one entry each:
    - A finding still failing after 3 attempts: log it with flag `unfixed finding`.
 
    Check the box. Round 2 fixes are not reviewed again. If round 1 returns `FINDINGS: none`, check fix round 1 and both round 2 boxes with `(skipped: round 1 clean)`.
-7. **Cleanup.** Follow `8_cleanup_docstrings.md` with its Unattended Mode. Check `Cleanup`.
+7. **Cleanup.** Follow `~/.claude/commands/qrspi/8_cleanup_docstrings.md` with its Unattended Mode. Check `Cleanup`.
 8. **Report.** Write `report.md` (below), post the chat summary, and check `Report`.
 
 ## Verification Gates

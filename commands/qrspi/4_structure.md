@@ -103,7 +103,7 @@ If you discover the design missed a critical constraint or made a decision based
 
 ## Unattended Mode
 
-When `/qrspi/auto` runs this stage, these replace the matching steps above. Each logged choice is an entry in `$ARGUMENTS/decisions.md`, in the format defined in `auto.md`.
+When `/qrspi/auto` runs this stage, these replace the matching steps above. Each logged choice is an entry in `$ARGUMENTS/decisions.md`, in the format defined in `~/.claude/commands/qrspi/auto.md`.
 
 - **Step 6, codegraph precondition:** `auto.md` checks it before the run starts.
 - **Step 6, NO-SHIP after round 3:** revise `structure.md` once more with the best grounded fix for each unresolved finding, log each fix with the finding it answers, and continue.

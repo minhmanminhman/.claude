@@ -97,7 +97,7 @@ If expanding the structure reveals that a phase can't be implemented as outlined
 
 ## Unattended Mode
 
-When `/qrspi/auto` runs this stage, these replace the matching steps above. Each logged choice is an entry in `$ARGUMENTS/decisions.md`, in the format defined in `auto.md`.
+When `/qrspi/auto` runs this stage, these replace the matching steps above. Each logged choice is an entry in `$ARGUMENTS/decisions.md`, in the format defined in `~/.claude/commands/qrspi/auto.md`.
 
 - **Step 4, open questions:** answer each with the best choice grounded in `design.md`, `research.md` and the code, log it, and write the plan with that answer.
 - **Unconfirmed seams:** log every test marked `(unconfirmed seam)`.
